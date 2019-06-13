@@ -14,7 +14,6 @@ public class Main {
     public static void main(String[] args) {
         Component frame = null;
         JOptionPane.showMessageDialog(frame, "We serve you the best service in Malaysia", "DreamCorp.co", JOptionPane.PLAIN_MESSAGE);
-
         
         SetUser();
         Starting();
@@ -37,6 +36,7 @@ public class Main {
         node.addUser(node, totalHuman[3], totalHuman[4]);
         node.addUser(node, totalHuman[4], totalHuman[8]);
         
+        //CALCULATE REVENUE
 //        node.userPay(node, totalHuman[1]);
 //        node.userPay(node, totalHuman[2]);
 //        node.userPay(node, totalHuman[7]);
@@ -150,7 +150,11 @@ public class Main {
                 
             }
             else if (choice == 3) {
-                //DELETE USER
+                System.out.print("ID to delete : ");
+                int deleteID = admin.nextInt();
+                node.delete(node, boss, totalHuman[deleteID]);
+                totalHuman[deleteID] = null;
+                System.out.println("Deleted.");
             }
             else if (choice == 4) {
                 
@@ -244,30 +248,6 @@ public class Main {
         }
         while (!(userChoice == 0));
     }
-    
-    
-//    private static void placeComponents(JPanel panel) {
-//        panel.setLayout(null);
-//        JLabel userLabel = new JLabel("Admin");
-//        userLabel.setBounds(10,20,80,25);
-//        panel.add(userLabel);
-//
-//        JTextField userText = new JTextField(20);
-//        userText.setBounds(100,20,165,25);
-//        panel.add(userText);
-//
-//        JLabel passwordLabel = new JLabel("Password");
-//        passwordLabel.setBounds(10,50,80,25);
-//        panel.add(passwordLabel);
-//
-//        JPasswordField passwordText = new JPasswordField(20);
-//        passwordText.setBounds(100,50,165,25);
-//        panel.add(passwordText);
-//
-//        JButton loginButton = new JButton("login");
-//        loginButton.setBounds(10, 80, 80, 25);
-//        panel.add(loginButton);
-//    }
-    
+        
 }
     

@@ -10,7 +10,6 @@ public class Node {
     Node parent; //PARAMETER FOR PARENT
     private ArrayList<Node> children; //DECLARE CHILD NODE
 
-    //MAIN CALL HERE
     public Node(Human data) {
         this (data, null); //PASS TO CONSTRUCTOR (ID, REVENUE, NAME, PARENT)
     }
@@ -46,6 +45,7 @@ public class Node {
         return addChild (new Node(data, parent)); //CREATE NEW CHILD NODE
     }
     
+    //GET SIZE
     public ArrayList<Node> getChildren() {
         return new ArrayList<>(children);
     }
@@ -173,7 +173,20 @@ public class Node {
 //    }    
     
     //METHOD TO DELETE USER
-    public static void deleteUser() {
-        
+    public void delete (Node root, Human parent, Human child) {
+        deleteUser(root, 0, parent, child);
+    }
+    
+    //METHOD TO DELETE USER
+    public void deleteUser(Node node, int depth, Human parent, Human child) {
+        if (node.data.ID == parent.ID) {
+            node.data.ID = 0;
+//            node.parent.children.remove(node.parent.children.indexOf(node));
+        }
+        else {
+            for (Node nodes:node.getChildren()) { //RECURSION. CHECK SETIAP PARENT
+                iter (nodes, depth+1, parent, child);
+            }
+        }
     }
 }
